@@ -1,17 +1,17 @@
-import { StyleSheet, Text } from "react-native";
 import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     background-color: ${({ theme }) => theme.COLORS.GRAY_500};
+    padding: 16px;
 `;
 
 export const Title = styled.Text`
-    width: 80%;
+    width: 90%;
     font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
     color: ${({ theme }) => theme.COLORS.GRAY_100};;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
 `;
 
@@ -23,37 +23,30 @@ export const Header = styled.View`
     margin-top: 24px;
 `;
 
-export const InputSection = styled.ScrollView`
-    margin-top: 24px;
+export const PickContainer = styled.View`
+    border: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
     width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 10px 12px;
+    height: 200px;
+    border-radius: 8px;
+    gap: 10px;
 `;
-
-export const Footer = styled.View`
-    align-items: center;
-    justify-content: center;
-
-    margin: 30px 0;
-`;
-
-export const styles = StyleSheet.create({
-    inputScrollView: {
-        alignItems: 'center',
-        gap: 12,
-    }
-})
-
-export const NPeopleSection = styled.View`
+export const PickInputs = styled.View`
     width: 100%;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 12px;
+    align-items: flex-end;
+    gap: 6px;
+`;
+export const PickExtras = styled.View``;
+
+export const ItemCount = styled.Text`
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
+    font-size: 18px;
 `;
 
-export const NPeopleLabel = styled.Text`
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    color: ${({ theme }) => theme.COLORS.GRAY_200};
-    font-size: 18px;
-    padding-left: 2px;
+export const NumberItemCount = styled(ItemCount)`
+    color: ${({ theme }) => theme.COLORS.ORANGE};
 `;

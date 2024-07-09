@@ -1,60 +1,69 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Feather from '@expo/vector-icons/Feather'
+import AntDesign from '@expo/vector-icons/AntDesign'
+import { Keyboard, Alert } from 'react-native';
 
 import { Input } from '../../components/Input'
+import { NumberInput } from '../../components/NumberInput';
 import { Button } from '../../components/Button'
+
 import * as S from './styles';
 import { styles } from './styles'
 
 export function ListParticipants() {
-    const [participantsNames, setParticipantsNames] = useState<string[]>(['']);
-
-    function getFakeNamePlaceholder() {
-        const fakeNames = [
-            'Fulano',
-            'Sicrano',
-            'Beltrano',
-        ]
-
-        return fakeNames[Math.floor(Math.random()*fakeNames.length)]
+    const [numberOfParticipants, setNumberOfParticipants] = useState('')
+    const [participants, setParticipants] = useState<string[]>([]);
+    
+    function handleChangeParticipantName(id: number, text: string) {
+        const newValues = [...participants];
+        newValues[id] = text;
+        setParticipants(newValues);
     }
 
-    /*
-    const handleChangeText = (text: string, index: number) => {
-        const newTextInputs = [...participantsNames];
-        newTextInputs[index] = text;
-        setParticipantsNames(newTextInputs);
-
-        if (text !== '' && index === participantsNames.length - 1) {
-            setParticipantsNames([...participantsNames, '']);
+    function handleGenerateParticipantsArray(length: number) {
+        if (!length || length <= 1) {
+            Alert.alert('Selecione pelo menos duas pessoas')
+            return;
         }
-    };
-    */
-
-    function handleChangeText(text: string, index: number) {
-        const newTextInputs = [...participantsNames];
-        newTextInputs[index] = text;
-        setParticipantsNames(newTextInputs);
+        setParticipants(new Array(length).fill(''))
+        Keyboard.dismiss();
     }
-
 
     return (
-        <S.Container>
-            <S.Header>
-                <S.Title>Quem vai dividir essa conta com você?</S.Title>
-            </S.Header>
-            <S.InputSection contentContainerStyle={styles.inputScrollView}>
-                { participantsNames.map((text, index) => (
+        <>
+            <S.Container>
+                <S.Header>
+                    <S.Title>Adicione o nome dos participantes</S.Title>
+                </S.Header>
+                <S.NPeopleSection>
+                <S.NPeopleLabel>Quantas pessoas?</S.NPeopleLabel>
+                <NumberInput
+                typeOfInput='qtd'
+                valueState={numberOfParticipants}
+                setValueState={setNumberOfParticipants}
+                />
+                <Button
+                icon={<AntDesign name="arrowright" size={22} color="#E0E0E0" />}
+                onPressFunction={() => handleGenerateParticipantsArray(parseInt(numberOfParticipants))}
+                />
+                </S.NPeopleSection>
+                <S.InputSection contentContainerStyle={styles.inputScrollView}>
+                { participants.map((item, index) => (
                     <Input 
-                     key={index}
-                     value={text}
-                     onChangeText={(text) => handleChangeText(text, index)}
-                     placeholder={getFakeNamePlaceholder()}
+                        key={index}
+                        value={item}
+                        defaultValue='0'
+                        onChangeText={(text) => handleChangeParticipantName(index, text)}
                     />
                 )) }
-            </S.InputSection>
-            <S.Footer>
-                <Button text="Tirar Foto" />
-            </S.Footer>
-        </S.Container>
+                </S.InputSection>
+                <S.Footer>
+                <Button
+                 icon={<Feather name="camera" size={20} color="#E0E0E0" />}
+                 text="Tirar Foto"
+                />
+                </S.Footer>
+            </S.Container>
+        </>
     )
 }

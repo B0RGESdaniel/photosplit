@@ -1,6 +1,5 @@
 import { StatusBar } from 'react-native';
 
-import { ListParticipants } from './src/screens/ListParticipants';
 import { ThemeProvider } from 'styled-components';
 import { 
   useFonts, 
@@ -10,6 +9,8 @@ import {
 import { JetBrainsMono_600SemiBold } from '@expo-google-fonts/jetbrains-mono';
 
 import theme from './src/theme';
+import { ShareItens } from './src/screens/ShareItens';
+// import { ListParticipants } from './src/screens/ListParticipants';
 import { Loading } from './src/components/Loading';
 
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
       <StatusBar 
         barStyle={"light-content"}
       />
-      { fontsLoaded ? <ListParticipants /> : <Loading /> }
+      { fontsLoaded ? <ShareItens /> : <Loading /> }
     </ThemeProvider>
   )
 }
