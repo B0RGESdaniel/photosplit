@@ -1,30 +1,18 @@
-import { TextInputProps } from 'react-native'
 import * as S from './styles'
+import { TextInputProps } from 'react-native';
 
-export type InputProps = {
+export type InputProps = TextInputProps & {
     label?: string;
     size?: 'sm' | 'lg'; 
 }
 
-export function Input({ label, size = 'lg' }: InputProps) {
-    /*
-    function getFakeNamePlaceholder() {
-        const fakeNames = [
-            'Fulano',
-            'Sicrano',
-            'Beltrano',
-        ]
-
-        return fakeNames[Math.floor(Math.random()*fakeNames.length)]
-    }
-    */
-
+export function Input({ label, size = 'lg', ...rest }: InputProps) {
     return (
         <S.Container>
             { label && <S.Label size={size}>{label}</S.Label> }
             <S.InputField
+             {...rest}
              size={size}
-            //  placeholder={getFakeNamePlaceholder()}
              placeholderTextColor={'#2E2C2F'}
             />
         </S.Container>

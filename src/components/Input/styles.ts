@@ -3,7 +3,11 @@ import styled from "styled-components/native";
 export const InputField = styled.TextInput<{size: string}>`
     background-color: ${({ theme }) => theme.COLORS.GRAY_600};
     min-width: 170px;
-    max-width: 300px;
+    /* max-width: 300px; */
+    width: 100%;
+    /* box-sizing: border-box; */
+    flex: 1;
+    display: inline-flex;
     height: ${props => props.size === 'sm' ? '45px' : '50px' };
     padding: 8px 12px;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -18,6 +22,8 @@ export const Container = styled.View`
     align-items: flex-start;
     justify-content: center;
     gap: 6px;
+    flex-grow: 1;
+
 `;
 
 export const Label = styled.Text<{size: string}>`

@@ -1,11 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
-import { TextInputProps } from 'react-native'
+import { TextInputProps } from 'react-native';
 import * as S from './styles'
-import * as IS from '../Input/styles';
 
-export type NumberInputProps = {
+export type NumberInputProps = TextInputProps & {
     typeOfInput: 'qtd' | 'value';
-    size: 'sm' | 'lg';
+    size?: 'sm' | 'lg';
     valueState: string;
     setValueState: Dispatch<SetStateAction<string>>;
     label?: string;
@@ -16,7 +15,8 @@ export function NumberInput({
     valueState,
     setValueState,
     label,
-    size = 'lg'
+    size = 'lg',
+    ...rest
 }: NumberInputProps) {
     function roundTo(num: number, places: number) {
         const factor = 10 ** places;
@@ -52,17 +52,16 @@ export function NumberInput({
     }
 
     return (
-        <IS.Container>
-            { label && <IS.Label size={size}>{label}</IS.Label> }
+        <S.Container>
+            { label && <S.Label size={size}>{label}</S.Label> }
             <S.Input
              size={size}
              keyboardType={(typeOfInput === 'qtd') ? 'number-pad' : 'decimal-pad'}
-             placeholderTextColor={'#2E2C2F'}
              typeOfInput={typeOfInput}
-             placeholder='0'
              value={valueState}
              onChangeText={(text) => handleChangeNumber(text)}
+             {...rest}
             />
-        </IS.Container>
+        </S.Container>
     )
 }
