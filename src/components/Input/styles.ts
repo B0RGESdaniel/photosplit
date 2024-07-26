@@ -6,7 +6,8 @@ export const InputField = styled.TextInput<{size: string}>`
     /* max-width: 300px; */
     width: 100%;
     /* box-sizing: border-box; */
-    flex: 1;
+    min-height: 45px;
+    /* flex: 1; */
     display: inline-flex;
     height: ${props => props.size === 'sm' ? '45px' : '50px' };
     padding: 8px 12px;

@@ -8,6 +8,7 @@ import { NumberInput } from '../../components/NumberInput';
 import { Button } from '../../components/Button';
 import { Checkbox } from '../../components/Checkbox';
 import theme from '../../theme';
+import { Keyboard } from 'react-native';
 
 export function ShareItens() {
     const [count, setCount] = useState(0);
@@ -26,65 +27,69 @@ export function ShareItens() {
     return (
         <S.Container>
             <S.Header>
-                <S.Title>Confira os valores e indique os participantes para cada item</S.Title>
+                <S.Title>Selecione os participantes para cada item</S.Title>
             </S.Header>
             <S.PickContainer>
-                <S.ItemCount>
+                {/* <S.ItemCount>
                     Item 
                     <S.NumberItemCount> {count} </S.NumberItemCount>
                      de <S.NumberItemCount>10</S.NumberItemCount>
-                </S.ItemCount>
-                <S.PickInputs>
+                </S.ItemCount> */}
+                <S.InputSection>
                     <Input 
-                     label='Descrição'
-                     size="sm"
+                    //  label='Descrição'
+                    size="sm"
+                    placeholder='Descrição'
                     />
-                    <NumberInput
-                     size="sm"
-                     typeOfInput='qtd' 
-                     label='Qtd'
-                     valueState={qtdItem}
-                     setValueState={setQtdItem}
-                    />
-                    <NumberInput
-                     size="sm"
-                     typeOfInput='value'
-                     label='Valor Unit'
-                     valueState={valorItem}
-                     setValueState={setValorItem}
-                    />
-                </S.PickInputs>
-                <S.PickExtras>
-                    <S.PickExtrasContent>
-                        <Checkbox
-                        size='sm'
-                        label="Valor" 
+                    <S.PickInputs>
+                        <NumberInput
+                        size="sm"
+                        typeOfInput='qtd' 
+                        label='Qtd'
+                        valueState={qtdItem}
+                        setValueState={setQtdItem}
                         />
-                        <Checkbox
-                        size='sm'
-                        label="Qtd" 
+                        <NumberInput
+                        size="sm"
+                        typeOfInput='value'
+                        label='Valor Unit'
+                        valueState={valorItem}
+                        setValueState={setValorItem}
                         />
-                    </S.PickExtrasContent>
-                    <S.PickExtrasContent>
+                        <S.CheckboxContainer>
+                            <S.CheckboxLabel>Dividir por</S.CheckboxLabel>
+                            <S.CheckboxContent>
+                                <Checkbox
+                                size='sm'
+                                label="Valor" 
+                                />
+                                <Checkbox
+                                size='sm'
+                                label="Qtd" 
+                                />
+                            </S.CheckboxContent>
+                        </S.CheckboxContainer>
+                    </S.PickInputs>
+                </S.InputSection>
+                    <S.ButtonSection>
                         <Button
                         variant='inverted'
                         size="sm"
-                        icon={<Feather name="plus" size={20} color={theme.COLORS.ORANGE} />}
+                        text='Adicionar item'
                         />
                         <Button
                         size="sm"
-                        icon={<AntDesign name="arrowright" size={20} color={theme.COLORS.GRAY_100} />}
+                        text='Próximo item'
                         />
-                    </S.PickExtrasContent>
-                </S.PickExtras>
+                    </S.ButtonSection>
             </S.PickContainer>
-            <S.SelectAllContainer>
+            {/* <S.SelectAllContainer>
                 <Checkbox
                 size='sm'
                 label="Selecionar todos" 
                 />
-            </S.SelectAllContainer>
-            <S.ScrollParticipants>
+            </S.SelectAllContainer> */}
+            {/* <S.ScrollParticipants>
                 {MOCKUP_PARTICIPANTS.map((part) => (
                     <S.ParticipantContainer key={part.id}>
                         <Checkbox
@@ -94,7 +99,7 @@ export function ShareItens() {
                         <QtdIncrementer />
                     </S.ParticipantContainer>
                 ))}
-            </S.ScrollParticipants>
+            </S.ScrollParticipants> */}
         </S.Container>
     )
 }

@@ -20,12 +20,13 @@ export const Header = styled.View`
     align-items: center;
     justify-content: center;
     padding: 16px;
-    margin-top: 24px;
+    margin-top: 10px;
 `;
 
 export const PickContainer = styled.View`
     border: 2px solid ${({ theme }) => theme.COLORS.ORANGE};
-    width: 90%;
+    display: flex;
+    width: 95%;
     padding: 16px 14px;
     margin: 0 6px;
     border-radius: 8px;
@@ -34,19 +35,52 @@ export const PickContainer = styled.View`
 
 export const PickInputs = styled.View`
     width: 100%;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
-    align-items: flex-end;
-    gap: 6px;
-    margin-bottom: 8px;
+    gap: 8px;
+    margin-top: 4px;
 `;
-export const PickExtras = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
+
+export const InputSection = styled.View`
+    flex-direction: column;
+    gap: 6px;
 `;
 
 export const PickExtrasContent = styled.View`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
-    gap: 10px;
+    gap: 2px;
+`;
+
+export const ButtonSection = styled.View`
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 6px;
+`;
+
+export const CheckboxContainer = styled.View`
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+    /* border: 1px solid blue; */
+`;
+
+export const CheckboxContent = styled.View`
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 45px;
+`;
+
+export const CheckboxLabel = styled.Text`
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+    font-size: 13px;
+    /* padding-left: 2px; */
 `;
 
 export const ItemCount = styled.Text`

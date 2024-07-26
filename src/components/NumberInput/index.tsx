@@ -57,6 +57,8 @@ export function NumberInput({
             <S.Input
              size={size}
              keyboardType={(typeOfInput === 'qtd') ? 'number-pad' : 'decimal-pad'}
+             placeholder={(typeOfInput === 'qtd') ? '0' : '0,00'}
+             placeholderTextColor={'#2E2C2F'}
              typeOfInput={typeOfInput}
              value={valueState}
              onChangeText={(text) => handleChangeNumber(text)}
